@@ -53,7 +53,7 @@ void main() {
 ```
 
 如果针对茫茫http服务，估计是个人都想放弃，那有没有一种方式可以在Flutter Test沙盒环境下获取服务能力呢？是否有机制绕过去，还真有：偶然机会发现官方介绍Process，其通过Process.run可以实现一些shell命令；
-![undefined](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/293185/1634629281583-bc44ff1d-cf0e-4ee5-8b83-ad0d31f92311.png)
+![process](https://img.alicdn.com/imgextra/i3/O1CN01dinktr1oKOgEuPzfE_!!6000000005206-2-tps-3044-1444.png)
 
 既然可以运行Shell命令，即可以通过Linux系统CURL/WGET方式发送一个http请求，在flutterTest环境中发送如下：
 ```
@@ -65,7 +65,7 @@ void main() {
   });
 ```
 实际测试发现在flutterTest环境中运行在Process.run也卡住没有返回值，跟进分析代码发现同步方式Process.runSyn可以正常返回值：
-![undefined](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/293185/1634631102937-d849b860-9c93-4c41-b06e-521bf197bcb4.png)
+![process_get](https://img.alicdn.com/imgextra/i4/O1CN01XWYEGg1tHG2er89hF_!!6000000005876-2-tps-2688-742.png)
 于是http服务能力就可以通过shell命令curl绕过去执行；
 
 ### 3.2 Method Channel服务能力解决
