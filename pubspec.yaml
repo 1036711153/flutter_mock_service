@@ -1,7 +1,6 @@
 name: flutter_mock_service
 description: A new Flutter project.
 version: 0.0.1
-author: 1036711153 <1036711153@qq.com>
 homepage: https://github.com/1036711153/flutter_mock_service
 
 environment:
@@ -14,11 +13,12 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-
-dev_dependencies:
   mockito: ^5.0.13
   flutter_test:
     sdk: flutter
+  stack_trace: ^1.10.0
+
+dev_dependencies:
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
