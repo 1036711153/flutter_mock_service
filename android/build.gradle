@@ -1,0 +1,41 @@
+group 'com.example.flutter_mock_service'
+version '1.0'
+
+buildscript {
+    repositories {
+        //集团mvn仓库地址
+        maven { url "http://mvnrepo.alibaba-inc.com/mvn/repository" }
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        //集团mvn仓库地址
+        maven { url "http://mvnrepo.alibaba-inc.com/mvn/repository" }
+        //集团flutter镜像地址,修改系统变量FLUTTER_STORAGE_BASE_URL生效，参见文档：https://yuque.antfin-inc.com/unicorn/dev/yd00yd
+        maven { url 'http://flutter-storage.alibaba-inc.com/xianyu'}
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
