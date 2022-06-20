@@ -19,6 +19,12 @@ const String _serverHost = '30.8.82.32';
 
 void main() {
   runInMockTestEnvironment(_serverHost, () {
+    const MethodChannel('flutter_mock_service').setMockMethodCallHandler((MethodCall methodCall) async {
+      if (methodCall.method == 'getPlatformVersionMock') {
+        return 'Android 11 Mock';
+      }
+      return null;
+    });
     testWidgets('widget test', (WidgetTester tester) async {
       await testImage(tester);
       await testGetHttp();
@@ -32,6 +38,8 @@ Future<void> testMethodChannel() async {
   const MethodChannel channel = MethodChannel('flutter_mock_service');
   String platformVersion = await channel.invokeMethod('getPlatformVersion');
   print(platformVersion);
+  String platformVersionMock = await channel.invokeMethod('getPlatformVersionMock');
+  print(platformVersionMock);
 }
 
 Future<void> testImage(WidgetTester tester) async {
